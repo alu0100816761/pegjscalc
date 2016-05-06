@@ -31,6 +31,13 @@ st     = CL s1:st? r:(SC st)* SC* CR {
                  children: t.concat(r.map( ([_, st]) => st ))
                };
             }
+        / WHILE e:assign DO st:st {
+            return {
+                type: 'WHILEDO',
+                c:e,
+                st:st,
+            };
+          }
        / IF e:assign THEN st:st ELSE sf:st
            {
              return {
@@ -88,3 +95,5 @@ NUMBER   = _ digits:$[0-9]+ _
             { 
               return { type: 'NUM', value: parseInt(digits, 10) }; 
             }
+WHILE   = _"while"_
+DO      = _"do"_

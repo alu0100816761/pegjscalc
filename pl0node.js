@@ -1,4 +1,4 @@
-pl0 = (function() {
+module.exports = (function() {
   "use strict";
 
   /*
@@ -47,7 +47,7 @@ pl0 = (function() {
                          children: t.concat(r.map( ([_, st]) => st ))
                        };
                     },
-        peg$c1 = function(e, s) {
+        peg$c1 = function(e, st) {
                     return {
                         type: 'WHILEDO',
                         c:e,
